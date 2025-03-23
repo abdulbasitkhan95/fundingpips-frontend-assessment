@@ -3,12 +3,11 @@
 import type * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 
-import type { Attribute } from "next-themes"
-
 // Define our own props interface without relying on imports from next-themes
 interface ThemeProviderProps {
   children: React.ReactNode
-  attribute?: Attribute | Attribute[]
+  // Use string or string[] instead of the missing Attribute type
+  attribute?: string | string[]
   defaultTheme?: string
   enableSystem?: boolean
   disableTransitionOnChange?: boolean

@@ -1,9 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-// Uncomment the line below if the regular ThemeProvider still causes issues
-// import { MinimalThemeProvider as ThemeProvider } from "@/components/minimal-theme-provider"
+
+// Try the regular theme provider first
+// import { ThemeProvider } from "@/components/theme-provider"
+
+// If that fails, use the fallback
+import { FallbackThemeProvider as ThemeProvider } from "@/components/fallback-theme-provider"
 
 export const metadata: Metadata = {
   title: "Stock Tracker",
@@ -18,9 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   )
