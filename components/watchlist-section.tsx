@@ -27,6 +27,7 @@ export default function WatchlistSection() {
         const symbols = watchlist.map((stock) => stock.symbol)
         const latestPrices = await getLatestPrices(symbols)
 
+        // Merge the latest prices with the watchlist data
         const updatedStocks = symbols
           .map((symbol) => {
             const latestData = latestPrices.find((item) => item.symbol === symbol)
