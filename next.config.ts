@@ -2,15 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  // This helps with Netlify deployments
   trailingSlash: false,
-  async rewrites() {
-    return [
-      {
-        source: "/:path*",
-        destination: "/",
-      },
-    ]
-  },
+  // This ensures assets are properly referenced
+  assetPrefix: process.env.NODE_ENV === "production" ? "/" : "",
 }
 
 module.exports = nextConfig
