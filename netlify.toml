@@ -4,6 +4,13 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    # Optional: Set if you want to use a specific version of Next.js
+    # nextjsVersion = "15.x"
+    # Optional: Enable if you're using Next.js Image component
+    imageOptimization = true
+    # Optional: Enable if you're using middleware
+    experimentalPageDurations = true
 
 # This redirect rule ensures all routes are handled by Next.js
 [[redirects]]
