@@ -1,6 +1,5 @@
 "use client"
 
-
 import * as React from "react"
 
 import type {
@@ -93,8 +92,8 @@ export const reducer = (state: State, action: Action): State => {
     case "DISMISS_TOAST": {
       const { toastId } = action
 
-      
-      
+    
+    
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {

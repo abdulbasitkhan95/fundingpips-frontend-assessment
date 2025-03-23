@@ -1,67 +1,33 @@
 import { Suspense } from "react"
-import { SearchBar } from "@/components/search-bar"
-import { StockList } from "@/components/stock-list"
-import { WatchlistSection } from "@/components/watchlist-section"
-import { MarketOverview } from "@/components/market-overview"
+import StockSearch from "@/components/stock-search"
+import WatchlistSection from "@/components/watchlist-section"
+import TrendingStocks from "@/components/trending-stocks"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Skeleton } from "@/components/ui/skeleton"
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-6 text-primary">FundingPips</h1>
+    <main className="container mx-auto p-4 max-w-7xl">
+      <h1 className="text-3xl font-bold mb-6">Stock Tracker</h1>
 
-      <SearchBar />
+      <StockSearch />
 
-      <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
-          <Tabs defaultValue="market" className="w-full">
-            <TabsList className="mb-4">
-              <TabsTrigger value="market">Market Overview</TabsTrigger>
-              <TabsTrigger value="trending">Trending</TabsTrigger>
-            </TabsList>
-            <TabsContent value="market">
-              <Suspense fallback={<MarketOverviewSkeleton />}>
-                <MarketOverview />
-              </Suspense>
-            </TabsContent>
-            <TabsContent value="trending">
-              <Suspense fallback={<StockListSkeleton />}>
-                <StockList type="trending" />
-              </Suspense>
-            </TabsContent>
-          </Tabs>
-        </div>
-
-        <div className="lg:col-span-1">
-          <h2 className="text-2xl font-semibold mb-4">Your Watchlist</h2>
-          <WatchlistSection />
-        </div>
-      </div>
+      <Tabs defaultValue="trending" className="mt-8">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="watchlist">My Watchlist</TabsTrigger>
+          <TabsTrigger value="trending">Trending</TabsTrigger>
+        </TabsList>
+        <TabsContent value="watchlist" className="mt-4">
+          <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading watchlist...</div>}>
+            <WatchlistSection />
+          </Suspense>
+        </TabsContent>
+        <TabsContent value="trending" className="mt-4">
+          <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading trending stocks...</div>}>
+            <TrendingStocks />
+          </Suspense>
+        </TabsContent>
+      </Tabs>
     </main>
-  )
-}
-
-function MarketOverviewSkeleton() {
-  return (
-    <div className="space-y-4">
-      <Skeleton className="h-[200px] w-full rounded-lg" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-        {[...Array(6)].map((_, i) => (
-          <Skeleton key={i} className="h-24 rounded-lg" />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function StockListSkeleton() {
-  return (
-    <div className="space-y-4">
-      {[...Array(5)].map((_, i) => (
-        <Skeleton key={i} className="h-20 w-full rounded-lg" />
-      ))}
-    </div>
   )
 }
 
