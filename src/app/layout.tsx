@@ -1,16 +1,10 @@
-import type React from "react"
-import type { Metadata } from "next"
-import "./globals.css"
-
-// Try the regular theme provider first
-// import { ThemeProvider } from "@/components/theme-provider"
-
-// If that fails, use the fallback
-import { FallbackThemeProvider as ThemeProvider } from "@/components/fallback-theme-provider"
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Stock Tracker",
-  description: "Track your favorite stocks and market trends",
+  title: 'Funding Pips',
+  description: 'Funding Pips',
+  generator: 'Funding Pips',
 }
 
 export default function RootLayout({
@@ -20,10 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
-
