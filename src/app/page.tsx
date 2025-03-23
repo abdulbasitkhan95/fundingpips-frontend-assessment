@@ -3,6 +3,7 @@ import StockSearch from "@/components/stock-search"
 import WatchlistSection from "@/components/watchlist-section"
 import TrendingStocks from "@/components/trending-stocks"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+// Remove any imports of MobileFilter if they exist
 
 export default function HomePage() {
   return (

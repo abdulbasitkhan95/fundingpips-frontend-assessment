@@ -5,7 +5,7 @@ import { Filter } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 
-export function MobileFilter() {
+export function SimpleMobileFilter() {
   const [open, setOpen] = useState(false)
 
   return (
@@ -21,7 +21,6 @@ export function MobileFilter() {
           <DialogTitle>Filter Stocks</DialogTitle>
         </DialogHeader>
         <div className="p-4">
-          {/* Filter options would go here */}
           <p className="text-muted-foreground">Filter options coming soon...</p>
         </div>
       </DialogContent>
