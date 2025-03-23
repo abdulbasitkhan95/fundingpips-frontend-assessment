@@ -1,11 +1,13 @@
 "use client"
 
 import type * as React from "react"
-import { ThemeProvider as NextThemesProvider, Attribute } from "next-themes"
+import { ThemeProvider as NextThemesProvider } from "next-themes"
 
-type ThemeProviderProps = {
+import type { Attribute } from "next-themes"
+
+// Define our own props interface without relying on imports from next-themes
+interface ThemeProviderProps {
   children: React.ReactNode
-  // Define the props we know next-themes accepts
   attribute?: Attribute | Attribute[]
   defaultTheme?: string
   enableSystem?: boolean

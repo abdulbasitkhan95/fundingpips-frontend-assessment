@@ -1,13 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider-simple"
-
-const inter = Inter({ subsets: ["latin"] })
+import { ThemeProvider } from "@/components/theme-provider"
+// Uncomment the line below if the regular ThemeProvider still causes issues
+// import { MinimalThemeProvider as ThemeProvider } from "@/components/minimal-theme-provider"
 
 export const metadata: Metadata = {
-  title: "Funding Pips",
+  title: "Stock Tracker",
   description: "Track your favorite stocks and market trends",
 }
 
@@ -18,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
