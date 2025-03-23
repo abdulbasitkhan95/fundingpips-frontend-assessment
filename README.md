@@ -211,7 +211,7 @@ stock-tracker/
 │   └── stock-provider.tsx  # Stock context provider
 ├── public/                 # Static assets
 ├── .eslintrc.json         # ESLint configuration
-├── next.config.js         # Next.js configuration
+├── next.config.ts         # Next.js configuration
 ├── package.json           # Project dependencies
 ├── README.md              # Project documentation
 ├── tailwind.config.js     # Tailwind CSS configuration
