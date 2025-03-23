@@ -5,6 +5,10 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# Enable build cache for faster builds
+[build.environment]
+  NEXT_TELEMETRY_DISABLED = "1"
+
 # This redirect rule ensures all routes are handled by Next.js
 [[redirects]]
   from = "/*"
