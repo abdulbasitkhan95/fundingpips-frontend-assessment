@@ -13,12 +13,12 @@ export async function generateMetadata({ params }: { params: Promise<{ symbol: s
   try {
     const stock = await getStockDetails(symbol)
     return {
-      title: `${stock.name} (${stock.symbol}) - Stock Tracker`,
+      title: `${stock.name} (${stock.symbol}) - Funding Pips`,
       description: `View stock data for ${stock.name} (${stock.symbol})`,
     }
   } catch (error) {
     return {
-      title: "Stock Not Found - Stock Tracker",
+      title: "Stock Not Found - Funding Pips",
       description: "The requested stock could not be found",
     }
   }

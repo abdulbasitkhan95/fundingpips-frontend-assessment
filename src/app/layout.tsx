@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Stock Tracker",
+  title: "Funding Pips",
   description: "Track your favorite stocks and market trends",
 }
 

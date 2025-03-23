@@ -1,151 +1,99 @@
-### StockTracker - Real-time Stock Tracking Application
+# Real-time Funding Pips
 
-A modern, responsive stock tracking application built with Next.js 15 that allows users to search for stocks, view real-time price updates, analyze historical data, and manage a personalized watchlist.
-
-
-
-
+A modern, responsive stock tracking application built with Next.js 15, React, and Tailwind CSS. This application allows users to search for stocks, view detailed information, track price history, and manage a personal watchlist.
 
 ## Table of Contents
 
 - [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Architectural Decisions](#architectural-decisions)
-- [How to Run the Project](#how-to-run-the-project)
+- [Technology Stack](#technology-stack)
+- [Architecture Decisions](#architecture-decisions)
+- [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
 - [Trade-offs and Optimizations](#trade-offs-and-optimizations)
+- [Deployment](#deployment)
 - [Future Improvements](#future-improvements)
-
 
 ## Features
 
-- **Stock Search**: Search for stocks by name or ticker symbol with real-time suggestions
-- **Real-time Price Updates**: View live stock price updates with visual indicators for price changes
-- **Historical Data Analysis**: Interactive charts showing price trends across different time periods
-- **Watchlist Management**: Add/remove stocks to a personalized watchlist for easy tracking
-- **Market Overview**: View current market indices and sector performance
-- **Responsive Design**: Fully responsive UI that works on desktop, tablet, and mobile devices
-- **Dark/Light Mode**: Theme support for user preference
+- **Stock Search**: Search for stocks by symbol or company name
+- **Detailed Stock Information**: View comprehensive stock details including price, market cap, P/E ratio, and more
+- **Interactive Price Charts**: Visualize stock price history with customizable time ranges
+- **Personalized Watchlist**: Add and remove stocks from your watchlist for easy tracking
+- **Trending Stocks**: Discover market movers and trending stocks
+- **Latest News**: Stay updated with the latest news related to specific stocks
+- **Responsive Design**: Optimized for all device sizes from mobile to desktop
 
+## Technology Stack
 
-## Tech Stack
+- **Frontend Framework**: [Next.js 15](https://nextjs.org/) with App Router
+- **UI Library**: [React 18](https://reactjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with [shadcn/ui](https://ui.shadcn.com/) components
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand) for global state
+- **Data Visualization**: [Recharts](https://recharts.org/) for interactive charts
+- **Icons**: [Lucide React](https://lucide.dev/) for beautiful, consistent icons
+- **Type Safety**: [TypeScript](https://www.typescriptlang.org/) for enhanced developer experience
+- **Deployment**: Configured for [Netlify](https://www.netlify.com/)
 
-- **Framework**: Next.js 15 with App Router
-- **UI**: React 19 with Server Components
-- **Styling**: Tailwind CSS with shadcn/ui components
-- **State Management**: Zustand with persistence
-- **Charts**: Recharts for interactive data visualization
-- **TypeScript**: For type safety and better developer experience
+## Architecture Decisions
 
+### App Router vs Pages Router
 
-## Architectural Decisions
+We chose Next.js 15's App Router for its improved performance, enhanced routing capabilities, and better support for React Server Components. This allows us to:
 
-### Server vs. Client Components
+- Implement a more intuitive file-based routing system
+- Leverage React Server Components for improved performance
+- Utilize streaming and suspense for better loading states
+- Implement more efficient data fetching patterns
 
-I've carefully separated server and client components to optimize performance and user experience:
+### Server Components vs Client Components
 
-- **Server Components**:
+We strategically use both Server and Client Components:
 
-- Stock details page
-- Historical data fetching
-- Market overview
-- Trending stocks list
-- News feed
+- **Server Components** for data fetching and static content, reducing JavaScript sent to the client
+- **Client Components** for interactive elements that require client-side state or event handling
+- Clear separation with 'use client' directive to maintain optimal performance
 
+### State Management with Zustand
 
-These components don't require client-side interactivity and benefit from server-side rendering for faster initial load and SEO.
+We chose Zustand over other state management solutions because:
 
+- It's lightweight with minimal boilerplate
+- It provides a simple API that works well with React hooks
+- It includes built-in persistence via middleware
+- It has excellent TypeScript support
 
-- **Client Components**:
+### Mock Data Implementation
 
-- Search bar with autocomplete
-- Watchlist management
-- Real-time price updates
-- Interactive charts
-- Theme switcher
+We implemented a comprehensive mock data system that:
 
+- Simulates real API responses without external dependencies
+- Provides consistent data structures for development
+- Allows for easy transition to real APIs in the future
+- Includes realistic price fluctuations and trending calculations
 
-These components require client-side interactivity and state management.
+### Responsive Design Strategy
 
+Our responsive design approach includes:
 
+- Mobile-first development using Tailwind's responsive classes
+- Custom components optimized for different screen sizes
+- Conditional rendering for optimal UX across devices
+- Performance optimizations for mobile networks
 
-
-### State Management
-
-I chose Zustand for state management because:
-
-1. **Lightweight**: Minimal bundle size impact compared to Redux
-2. **Simple API**: Easy to learn and use with minimal boilerplate
-3. **React Hooks Integration**: Works seamlessly with React's hooks pattern
-4. **Persistence**: Built-in support for localStorage persistence
-5. **TypeScript Support**: Excellent type safety
-
-
-The application uses Zustand to manage:
-
-- Watchlist state
-- Recent searches
-- UI preferences
-
-
-### Data Fetching Strategy
-
-The application implements a hybrid data fetching approach:
-
-1. **Server-side Data Fetching**:
-
-1. Uses React's `cache` function to deduplicate requests
-2. Implements server components for initial data loading
-3. Provides SEO benefits for stock detail pages
-
-
-
-2. **Client-side Data Fetching**:
-
-1. Real-time price updates via polling
-2. Search functionality with debounced queries
-3. API routes for client-side data access
-
-
-
-3. **Mock API Implementation**:
-
-1. Simulated stock data
-2. Realistic delay simulation for API calls
-3. Structured to be easily replaced with real API integration
-
-
-
-
-
-### UI/UX Design
-
-The UI is designed with these principles:
-
-1. **Clean and Minimal**: Focus on data presentation without clutter
-2. **Responsive**: Works on all device sizes
-3. **Accessible**: Follows WCAG guidelines for accessibility
-4. **Consistent**: Uses shadcn/ui components for design consistency
-5. **Performance**: Optimized for fast rendering and minimal layout shifts
-
-
-## How to Run the Project
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18.17 or later
+- Node.js 18.17.0 or later
 - npm or yarn
-
 
 ### Installation
 
 1. Clone the repository:
-
-```shellscript
-git clone https://github.com/yourusername/stock-tracker.git
-cd stock-tracker
-```
-
+   ```bash
+   git clone https://github.com/abdulbasitkhan95/fundingpips-frontend-assessment
+   cd fundingpips-frontend-assessment
+    ```
 
 2. Install dependencies:
 
@@ -181,41 +129,56 @@ yarn start
 ## Project Structure
 
 ```plaintext
-stock-tracker/
-├── app/                    # Next.js App Router
-│   ├── api/                # API routes
-│   ├── stock/[symbol]/     # Stock detail pages
-│   ├── globals.css         # Global styles
-│   ├── layout.tsx          # Root layout
-│   └── page.tsx            # Home page
-├── components/             # React components
-│   ├── market-overview.tsx # Market overview component
-│   ├── price-chart.tsx     # Stock price chart
-│   ├── search-bar.tsx      # Search functionality
-│   ├── stock-card.tsx      # Stock card component
-│   ├── stock-header.tsx    # Stock detail header
-│   ├── stock-list.tsx      # List of stocks
-│   ├── stock-news.tsx      # Stock news component
-│   ├── stock-stats.tsx     # Stock statistics
-│   ├── ui/                 # UI components (shadcn)
-│   └── watchlist-section.tsx # Watchlist component
-├── hooks/                  # Custom React hooks
-│   ├── use-debounce.ts     # Debounce hook
-│   ├── use-stock-store.ts  # Zustand store
-│   └── use-toast.ts        # Toast notifications
-├── lib/                    # Utility functions
-│   ├── stock-api.ts        # Mock API functions
-│   ├── types.ts            # TypeScript types
-│   └── utils.ts            # Utility functions
-├── providers/              # Context providers
-│   └── stock-provider.tsx  # Stock context provider
-├── public/                 # Static assets
-├── .eslintrc.json         # ESLint configuration
-├── next.config.ts         # Next.js configuration
-├── package.json           # Project dependencies
-├── README.md              # Project documentation
-├── tailwind.config.js     # Tailwind CSS configuration
-└── tsconfig.json          # TypeScript configuration
+fundingpips-frontend-assessment/
+├── app/                                # Next.js App Router
+│   ├── layout.tsx                      # Root layout component
+│   ├── page.tsx                        # Home page
+│   ├── globals.css                     # Global styles
+│   ├── not-found.tsx                   # 404 page
+│   └── stocks/                         # Stock-related pages
+│       ├── [symbol]/                   # Dynamic stock detail pages
+│       │   ├── page.tsx                # Stock detail page
+│       │   └── not-found.tsx           # Stock not found page
+│       └── not-found.tsx               # Stock not found page
+├── components/                         # Reusable React components
+│   ├── ui/                             # UI components (shadcn/ui)
+│   │   ├── badge.tsx                   # Badge component
+│   │   ├── button.tsx                  # Button component
+│   │   ├── card.tsx                    # Card component
+│   │   ├── dialog.tsx                  # Dialog component
+│   ├── price-chart.tsx                 # Price chart component
+│   ├── simple-mobile-filter.tsx        # Mobile filter component
+│   ├── simple-notification.tsx         # Notification component
+│   ├── simple-stock-menu.tsx           # Stock menu component
+│   ├── stock-header.tsx                # Stock header component
+│   ├── stock-news.tsx                  # Stock news component
+│   ├── stock-search.tsx                # Stock search component
+│   ├── stock-stats.tsx                 # Stock statistics component
+│   ├── theme-provider.tsx              # Theme provider component
+│   ├── trending-stocks.tsx             # Trending stocks component
+│   └── watchlist-section.tsx           # Watchlist component
+├── hooks/                              # Custom React hooks
+│   ├── use-mobile.tsx                  # Mobile detection hook
+│   ├── use-stock-search.ts             # Stock search hook
+├── lib/                                # Utility functions and types
+│   ├── stock-api.ts                    # Mock API functions
+│   ├── types.ts                        # TypeScript type definitions
+│   └── utils.ts                        # Utility functions
+├── public/                             # Static assets
+│   └── _redirects                      # Netlify redirects file
+├── store/                              # Zustand store
+│   └── watchlist-store.ts              # Watchlist state management
+├── .npmrc                              # NPM configuration
+├── middleware.ts                       # Next.js middleware
+├── next.config.js                      # Next.js configuration
+├── netlify.toml                        # Netlify configuration
+├── package.json                        # Project dependencies and scripts
+├── postcss.config.js                   # PostCSS configuration
+├── PROJECT_STRUCTURE.md                # This file
+├── README.md                           # Project documentation
+├── tailwind.config.js                  # Tailwind CSS configuration
+├── tsconfig.json                       # TypeScript configuration
+└── vercel.json                         # Vercel configuration
 ```
 
 ## Trade-offs and Optimizations
@@ -269,13 +232,6 @@ stock-tracker/
 
 1. Implemented debouncing for search queries to reduce API calls
 2. Improved user experience by preventing excessive requests
-
-
-
-3. **Cached API Responses**:
-
-1. Used React's `cache` function to deduplicate API requests
-2. Reduced redundant data fetching for improved performance
 
 
 

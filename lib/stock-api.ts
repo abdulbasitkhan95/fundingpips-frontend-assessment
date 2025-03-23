@@ -1,6 +1,6 @@
 import type { Stock, HistoricalDataPoint, NewsItem, SearchResult } from "./types"
 
-// Mock data for stocks
+
 const mockStocks: Record<string, Stock> = {
   AAPL: {
     symbol: "AAPL",
@@ -79,7 +79,7 @@ const mockStocks: Record<string, Stock> = {
   },
 }
 
-// Search for stocks by name or symbol
+
 export async function searchStocks(query: string): Promise<SearchResult[]> {
   if (!query || query.length < 2) return []
 
@@ -96,7 +96,7 @@ export async function searchStocks(query: string): Promise<SearchResult[]> {
     }))
 }
 
-// Get stock details by symbol
+
 export async function getStockDetails(symbol: string): Promise<Stock> {
   const upperSymbol = symbol.toUpperCase()
   return (
@@ -118,13 +118,13 @@ export async function getStockDetails(symbol: string): Promise<Stock> {
   )
 }
 
-// Get historical price data
+
 export async function getHistoricalData(symbol: string, timeRange: string): Promise<HistoricalDataPoint[]> {
   const stock = await getStockDetails(symbol)
   const currentPrice = stock.price
   const data: HistoricalDataPoint[] = []
 
-  // Generate 30 data points
+  
   for (let i = 30; i >= 0; i--) {
     const timestamp = Date.now() - i * 24 * 60 * 60 * 1000
     const randomChange = (Math.random() - 0.5) * 0.05
@@ -139,7 +139,7 @@ export async function getHistoricalData(symbol: string, timeRange: string): Prom
   return data
 }
 
-// Get latest news for a stock
+
 export async function getStockNews(symbol: string): Promise<NewsItem[]> {
   const stock = await getStockDetails(symbol)
 
@@ -174,12 +174,12 @@ export async function getStockNews(symbol: string): Promise<NewsItem[]> {
   ]
 }
 
-// Get latest prices for multiple stocks
+
 export async function getLatestPrices(symbols: string[]): Promise<Stock[]> {
   return Promise.all(symbols.map((symbol) => getStockDetails(symbol)))
 }
 
-// Get trending stocks
+
 export async function getTrendingStocks(): Promise<Stock[]> {
   const trendingSymbols = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
   return Promise.all(trendingSymbols.map((symbol) => getStockDetails(symbol)))

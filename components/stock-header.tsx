@@ -23,7 +23,6 @@ export default function StockHeader({ stock }: StockHeaderProps) {
     setInWatchlist(!inWatchlist)
   }
 
-  // Ensure we have valid numbers
   const price = isNaN(stock.price) ? 0 : stock.price
   const previousClose = isNaN(stock.previousClose) ? price : stock.previousClose
 

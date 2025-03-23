@@ -3,12 +3,11 @@ import StockSearch from "@/components/stock-search"
 import WatchlistSection from "@/components/watchlist-section"
 import TrendingStocks from "@/components/trending-stocks"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-// Remove any imports of MobileFilter if they exist
 
 export default function HomePage() {
   return (
     <main className="container mx-auto p-4 max-w-7xl">
-      <h1 className="text-3xl font-bold mb-6">Stock Tracker</h1>
+      <h1 className="text-3xl font-bold mb-6">Funding Pips</h1>
 
       <StockSearch />
 

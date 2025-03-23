@@ -51,7 +51,6 @@ export function SimpleNotification({ message, type = "info", duration = 5000, on
   )
 }
 
-// Simple hook to use notifications
 export function useNotification() {
   const [notifications, setNotifications] = useState<
     Array<{
